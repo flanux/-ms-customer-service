@@ -21,7 +21,7 @@ public class CustomerController{
         return customerService.createCustomer(customer);
     }
 
-    @PutMapping("/{id}/update")
+    @PutMapping("/{id}/status")
     public Customer updateCustomer(@PathVariable Long id, @PathVariable Integer status){
         return customerService.updateCustomer(id, status);
     }
@@ -32,17 +32,17 @@ public class CustomerController{
     }
 
     @GetMapping("/{id}")
-    public Customer getById(@PathVariable Long id){
-        return customerservice.getById(id);
+    public Optional<Customer> getById(@PathVariable Long id){
+        return customerService.getById(id);
     }
 
-    @GetMapping("customer/{customerId}")
-    public Customer getByCusomterId(@PathVariable Long id){
-        return customerService.getByCusomterId(id);
+    @GetMapping("id/{customerId}")
+    public List<Customer> getByCusomterId(@PathVariable Long customerId){
+        return customerService.getByCustomerId(customerId);
     }
 
-    @GetMapping("customer/{email}")
-    public Customer getByCustomerEmail(@PathVariable String email){
+    @GetMapping("email/{email}")
+    public List<Customer> getByCustomerEmail(@PathVariable String email){
         return customerService.getByCustomerEmail(email);
     }
 };
